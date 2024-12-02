@@ -11,7 +11,7 @@ enum Executor {
     private static let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 4
+        formatter.maximumFractionDigits = 1
         return formatter
     }()
 
@@ -24,9 +24,9 @@ enum Executor {
     private static func execute(part: () -> Int) {
         let date = Date.now
         let result = part()
-        let elapsed = date.timeIntervalSinceNow
+        let elapsed = date.timeIntervalSinceNow * 1000
         let elapsedNumber = NSNumber(floatLiteral: abs(elapsed))
 
-        print("- Result:", result, "Time:", "\(Self.numberFormatter.string(from: elapsedNumber)!)s")
+        print("- Result: \(result);", "Time: \(Self.numberFormatter.string(from: elapsedNumber)!)ms")
     }
 }
