@@ -17,16 +17,16 @@ enum Executor {
 
     static func execute<T: Day>(_ day: T.Type) {
         print(String(describing: day))
-        execute(part: day.part1)
-        execute(part: day.part2)
+        execute(partIdx: 1, part: day.part1)
+        execute(partIdx: 2, part: day.part2)
     }
 
-    private static func execute(part: () -> Int) {
+    private static func execute(partIdx: Int, part: () -> Int) {
         let date = Date.now
         let result = part()
         let elapsed = date.timeIntervalSinceNow * 1000
         let elapsedNumber = NSNumber(floatLiteral: abs(elapsed))
 
-        print("- Result: \(result);", "Time: \(Self.numberFormatter.string(from: elapsedNumber)!)ms")
+        print("Part \(partIdx): Result – \(result);", "Time – \(Self.numberFormatter.string(from: elapsedNumber)!)ms")
     }
 }
