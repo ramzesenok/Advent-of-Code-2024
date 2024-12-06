@@ -135,9 +135,3 @@ enum Day04: Day {
         return result
     }
 }
-
-extension String.SubSequence {
-    subscript(_ idx: Int) -> Character {
-        self[self.index(self.startIndex, offsetBy: idx)]
-    }
-}
