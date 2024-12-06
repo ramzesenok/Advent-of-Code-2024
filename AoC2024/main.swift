@@ -7,4 +7,4 @@
 
 import Foundation
 
-Executor.execute(Day05.self)
+Executor.execute(Day06.self)
