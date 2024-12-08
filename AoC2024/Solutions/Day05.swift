@@ -5,8 +5,6 @@
 //  Created by Roman Mirzoyan on 01.12.24.
 //
 
-import Foundation
-
 enum Day05: Day {
     static let input = ""
 
