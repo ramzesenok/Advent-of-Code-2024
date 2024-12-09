@@ -36,13 +36,7 @@ enum Day08: Day {
     static let columnsCount = lines[0].count + 1
 
     static func part1() -> Int {
-        var antennasMap = [Character: [Coordinate]]()
-
-        for idx in 0..<input.count where ![".", "\n"].contains(input[idx]) {
-            let coordinate = Coordinate(from: idx, columnsCount: columnsCount)
-
-            antennasMap[input[idx], default: []].append(coordinate)
-        }
+        let antennasMap = getAntennasMap()
 
         var antinodes = Set<Coordinate>()
 
@@ -64,13 +58,7 @@ enum Day08: Day {
     }
 
     static func part2() -> Int {
-        var antennasMap = [Character: [Coordinate]]()
-
-        for idx in 0..<input.count where ![".", "\n"].contains(input[idx]) {
-            let coordinate = Coordinate(from: idx, columnsCount: columnsCount)
-
-            antennasMap[input[idx], default: []].append(coordinate)
-        }
+        let antennasMap = getAntennasMap()
 
         var antinodes = Set(antennasMap.values.flatMap({ $0 }))
 
@@ -106,6 +94,18 @@ enum Day08: Day {
         }
 
         return antinodes.count
+    }
+
+    static func getAntennasMap() -> [Character: [Coordinate]] {
+        var antennasMap = [Character: [Coordinate]]()
+
+        for idx in 0..<input.count where ![".", "\n"].contains(input[idx]) {
+            let coordinate = Coordinate(from: idx, columnsCount: columnsCount)
+
+            antennasMap[input[idx], default: []].append(coordinate)
+        }
+
+        return antennasMap
     }
 
     static func combinations<T>(_ list: [T], choose k: Int) -> [[T]] {
